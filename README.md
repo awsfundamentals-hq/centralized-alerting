@@ -1,14 +1,43 @@
-# Welcome to your CDK TypeScript project
+# Centralized Alerting for AWS Organizations
 
-This is a blank project for CDK development with TypeScript.
+Centralized CloudWatch alarm forwarding and notification system for AWS Organizations using EventBridge, Lambda, and CDK.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Architecture
 
-## Useful commands
+- **Management Account**: Deploys StackSets to member accounts for alarm forwarding
+- **Observability Account**: Receives alarms via EventBridge and sends notifications to Discord
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Resources
+
+- [Blog Post: Build Centralized Alerting Across Your Organization](https://awsfundamentals.com/blog/build-centralized-alerting-across-your-organization-with-cloudwatch-eventbridge-lambda-and-cdk)
+
+[![YouTube Video](https://img.youtube.com/vi/95bIBoIHer8/0.jpg)](https://youtu.be/95bIBoIHer8)
+
+## Prerequisites
+
+- AWS CDK installed
+- Node.js 20+
+- AWS Organizations with management account access
+- Discord webhook URL
+
+## Setup
+
+```bash
+pnpm install
+```
+
+Configure `config/environments.ts` with your:
+- Organization ID
+- Target OUs
+- Observability account ID
+- Discord webhook URL
+
+## Deployment
+
+```bash
+pnpm deploy
+```
+
+## License
+
+MIT
